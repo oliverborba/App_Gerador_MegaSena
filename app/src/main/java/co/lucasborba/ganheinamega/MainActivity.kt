@@ -75,9 +75,16 @@ class MainActivity : AppCompatActivity() {
 
         txtResult.text = numbers.joinToString(" - ")
 
-        val editor = prefs.edit()
-        editor.putString("result", txtResult.text.toString())
-        editor.apply()
+        //Alternativa 1
+//        val editor = prefs.edit()
+//        editor.putString("result", txtResult.text.toString())
+//        editor.apply()
+
+        //Alternativa 2
+        prefs.edit().apply(){
+            putString("result", txtResult.text.toString())
+            apply()
+        }
 
 
         // Commit -> salvar de forma sincrona (bloquear a interface)
